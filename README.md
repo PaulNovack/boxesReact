@@ -5,9 +5,11 @@
 
 - Boxes front end in React for CPlus or Go Backends.  A simple mobile app to inventory items in boxes with pictures and description.
 
-- Work in progress only contains Box List: add , update, delete.  Box image not enabled to take picture and upload image
+- Work in progress....
 
 - Works with BoxesCplus with some configuration that must be done manually.
+
+- BoxesGo needs updated for Front End to work properly.
  
 - Ability to take picture with phone and replace box image not implemented
 
