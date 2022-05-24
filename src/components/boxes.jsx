@@ -20,28 +20,17 @@ class Boxes extends Component {
     this.updateBox(box);
   };
   handleDelete = (id) => {
-    console.log(id.id);
     let DeleteBox = {};
     let Boxes = this.state.BoxList;
     Boxes.forEach((obj, idx) => {
       if (obj.id == id.id) {
         DeleteBox = obj;
         Boxes.splice(idx, 1);
-        console.log("splicing!!");
       }
-      console.log("Not Splicing");
-      console.log(id.id);
-      console.log(idx);
-      console.log(obj);
     });
-    console.log("Boxes");
-    console.log(Boxes);
-    console.log("Delete Box");
-    console.log(DeleteBox);
     this.deleteBox(DeleteBox);
   };
   handleViewItems = (box_id) => {
-    console.log("handleViewItems Clicked");
     this.props.handleViewItems(box_id);
   };
   createBox = () => {

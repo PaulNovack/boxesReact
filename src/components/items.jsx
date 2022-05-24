@@ -6,7 +6,6 @@ class Items extends Component {
     ItemList: [],
   };
   componentDidMount = () => {
-    console.log("Items Did Mount");
     this.getItems();
   };
 
@@ -21,24 +20,14 @@ class Items extends Component {
     this.updateItem(Item);
   };
   handleDelete = (id) => {
-    console.log(id.id);
     let DeleteItem = {};
     let Items = this.state.ItemList;
     Items.forEach((obj, idx) => {
       if (obj.id == id.id) {
         DeleteItem = obj;
         Items.splice(idx, 1);
-        console.log("splicing!!");
       }
-      console.log("Not Splicing");
-      console.log(id.id);
-      console.log(idx);
-      console.log(obj);
     });
-    console.log("Items");
-    console.log(Items);
-    console.log("Delete Item");
-    console.log(DeleteItem);
     this.deleteItem(DeleteItem);
   };
   handleViewItems = (e, id) => {};
@@ -52,9 +41,6 @@ class Items extends Component {
     const url = "http://192.168.86.45:8123/item/" + this.props.box_id.id;
     axios.post(url, Item, { withCredentials: true }).then((res) => {
       let NewItem = res.data;
-      console.log("Item then New Item");
-      console.log(Item);
-      console.log(NewItem);
       let ItemList = this.state.ItemList.concat(NewItem);
       this.setState({ ItemList });
     });
@@ -66,6 +52,7 @@ class Items extends Component {
   };
   deleteItem = (Item) => {
     Item.picture = "";
+
     const url = "http://192.168.86.45:8123/item/" + Item.id;
     axios.delete(url, Item, { withCredentials: true }).then((res) => {});
 
@@ -74,8 +61,6 @@ class Items extends Component {
   };
   getItems = () => {
     const url = "http://192.168.86.45:8123/box/" + this.props.box_id.id;
-    console.log("box id Here");
-    console.log(this.props.box_id.id);
     axios.get(url, { withCredentials: true }).then((res) => {
       const ItemList = res.data;
 

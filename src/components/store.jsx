@@ -13,7 +13,6 @@ class Store extends Component {
     authKey: "",
   };
   handleViewBoxes = () => {
-    console.log("View Boxes Event button or other clicked");
     const viewIndex = 2;
     this.setState({ viewIndex });
   };
