@@ -40,7 +40,10 @@ class Boxes extends Component {
     console.log(DeleteBox);
     this.deleteBox(DeleteBox);
   };
-  handleViewItems = (e, id) => {};
+  handleViewItems = (box_id) => {
+    console.log("handleViewItems Clicked");
+    this.props.handleViewItems(box_id);
+  };
   createBox = () => {
     const Box = {};
     Box.id = this.state.BoxList.length + 1;
@@ -48,7 +51,7 @@ class Boxes extends Component {
     //Box.weight = 0;
     Box.picture = "";
     axios
-      .post(`http://localhost:8123/box`, Box, { withCredentials: true })
+      .post(`http://192.168.86.45:8123/box`, Box, { withCredentials: true })
       .then((res) => {
         let NewBox = [res.data];
         NewBox[0].weight = 0;
@@ -60,12 +63,12 @@ class Boxes extends Component {
   };
   updateBox = (box) => {
     box.picture = "";
-    const url = "http://localhost:8123/box/" + box.id;
+    const url = "http://192.168.86.45:8123/box/" + box.id;
     axios.put(url, box, { withCredentials: true }).then((res) => {});
   };
   deleteBox = (box) => {
     box.picture = "";
-    const url = "http://localhost:8123/box/" + box.id;
+    const url = "http://192.168.86.45:8123/box/" + box.id;
     axios.delete(url, box, { withCredentials: true }).then((res) => {});
 
     let BoxList = this.state.BoxList;
@@ -73,7 +76,7 @@ class Boxes extends Component {
   };
   getBoxes = () => {
     axios
-      .get(`http://localhost:8123/box`, { withCredentials: true })
+      .get(`http://192.168.86.45:8123/box`, { withCredentials: true })
       .then((res) => {
         const BoxList = res.data;
 
@@ -102,7 +105,7 @@ class Boxes extends Component {
             handleWeightChange={this.handleWeightUpdate}
             handleNameUpdate={this.handleNameUpdate}
             handleDelete={this.handleDelete}
-            handleViewItems={this.handleViewItems}
+            handleViewItems={this.props.handleViewItems}
           />
         ))}
       </React.Fragment>

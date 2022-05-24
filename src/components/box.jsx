@@ -50,14 +50,13 @@ class Box extends Component {
             />
           </div>
           <div className="col">
-            Weight:
             <input
               id={id}
               className="mt-2 form-control-sm"
               key="weightInput-{id}"
               name="weight"
               defaultValue={weight}
-              style={{ width: "30px" }}
+              style={{ width: "50px" }}
               onBlur={(e) => this.props.handleWeightChange(e, { id })}
             />
           </div>
@@ -73,7 +72,7 @@ class Box extends Component {
           </div>
           <div className="col" style={{ width: "75px" }}>
             <button
-              key="deleteButton-{id}"
+              key="ViewBox{id}"
               type="button"
               className="btn-sm btn-primary mt-2"
               onClick={() => this.props.handleViewItems({ id })}
