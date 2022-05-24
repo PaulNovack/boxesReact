@@ -67,7 +67,7 @@ class Item extends Component {
               className="btn-sm btn-danger mt-2"
               onClick={() => this.props.handleDelete({ id })}
             >
-              Delete
+              Delete Item
             </button>
           </div>
         </div>

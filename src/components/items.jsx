@@ -70,28 +70,33 @@ class Items extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <button
-            key="createItem"
-            type="button"
-            onClick={this.createItem}
-            className="btn btn-success mt-2"
-          >
-            + New Item
-          </button>
+        <div className="container">
+          <div className="row text-center mt-2">
+            <h3>{this.props.box_name}</h3>
+          </div>
+          <div className="row">
+            <button
+              key="createItem"
+              type="button"
+              onClick={this.createItem}
+              className="btn btn-success mt-2"
+            >
+              + New Item
+            </button>
+          </div>
+          {this.state.ItemList.map((item) => (
+            <Item
+              key={item.id}
+              name={item.name}
+              quantity={item.quantity}
+              id={item.id}
+              handlequantityChange={this.handlequantityUpdate}
+              handleNameUpdate={this.handleNameUpdate}
+              handleDelete={this.handleDelete}
+              handleViewItems={this.handleViewItems}
+            />
+          ))}
         </div>
-        {this.state.ItemList.map((item) => (
-          <Item
-            key={item.id}
-            name={item.name}
-            quantity={item.quantity}
-            id={item.id}
-            handlequantityChange={this.handlequantityUpdate}
-            handleNameUpdate={this.handleNameUpdate}
-            handleDelete={this.handleDelete}
-            handleViewItems={this.handleViewItems}
-          />
-        ))}
       </React.Fragment>
     );
   }

@@ -75,28 +75,33 @@ class Boxes extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <button
-            key="createBox"
-            type="button"
-            onClick={this.createBox}
-            className="btn btn-success mt-2"
-          >
-            + New Box
-          </button>
+        <div className="container">
+          <div className="row text-center mt-2">
+            <h3>Viewing All Boxes</h3>
+          </div>
+          <div className="row">
+            <button
+              key="createBox"
+              type="button"
+              onClick={this.createBox}
+              className="btn btn-success mt-2"
+            >
+              + New Box
+            </button>
+          </div>
+          {this.state.BoxList.map((item) => (
+            <Box
+              key={item.id}
+              name={item.name}
+              weight={item.weight}
+              id={item.id}
+              handleWeightChange={this.handleWeightUpdate}
+              handleNameUpdate={this.handleNameUpdate}
+              handleDelete={this.handleDelete}
+              handleViewItems={this.props.handleViewItems}
+            />
+          ))}
         </div>
-        {this.state.BoxList.map((item) => (
-          <Box
-            key={item.id}
-            name={item.name}
-            weight={item.weight}
-            id={item.id}
-            handleWeightChange={this.handleWeightUpdate}
-            handleNameUpdate={this.handleNameUpdate}
-            handleDelete={this.handleDelete}
-            handleViewItems={this.props.handleViewItems}
-          />
-        ))}
       </React.Fragment>
     );
   }

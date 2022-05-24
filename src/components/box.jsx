@@ -67,7 +67,7 @@ class Box extends Component {
               className="btn-sm btn-danger mt-2"
               onClick={() => this.props.handleDelete({ id })}
             >
-              Delete
+              Delete Box
             </button>
           </div>
           <div className="col" style={{ width: "75px" }}>
@@ -75,9 +75,9 @@ class Box extends Component {
               key="ViewBox{id}"
               type="button"
               className="btn-sm btn-primary mt-2"
-              onClick={() => this.props.handleViewItems({ id })}
+              onClick={() => this.props.handleViewItems({ id }, { name })}
             >
-              Items
+              View Items
             </button>
           </div>
         </div>
