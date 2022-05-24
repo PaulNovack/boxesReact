@@ -5,7 +5,7 @@
 
 - Boxes front end in React for CPlus or Go Backends.  A simple mobile app to inventory items in boxes with pictures and description.
 
-- Work in progress....
+- Work in progress.... Missing Nav Bar can test box and items add update delete currently.  Refresh will return to login screen currently (purposefully at moment)
 
 - Works with BoxesCplus with some configuration that must be done manually.
 
