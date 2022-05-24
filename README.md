@@ -8,10 +8,13 @@
 - Work in progress only contains Box List: add , update, delete.  Box image not enabled to take picture and upload image
 
 - Works with BoxesCplus with some configuration that must be done manually.
+ 
+- Ability to take picture with phone and replace box image not implemented
 
+![Login](https://user-images.githubusercontent.com/3844301/170075266-ab207f77-770b-422d-9df7-c1e2e239620d.png)
 
 ![Boxes](https://user-images.githubusercontent.com/3844301/169838776-1c52ce17-f32f-46cc-9779-494debd83fb1.png)
 
 ![ItemList](https://user-images.githubusercontent.com/3844301/170075260-d1767b87-f850-40a4-b903-efcbb99008f6.png)
 
-![Login](https://user-images.githubusercontent.com/3844301/170075266-ab207f77-770b-422d-9df7-c1e2e239620d.png)
+
