@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Login } from "../components/login";
 import Boxes from "../components/boxes";
 import Items from "../components/items";
-import Item from "../components/item";
 import NavBar from "../components/navbar";
+import Login from "./login";
+import Cookies from "universal-cookie";
 class Store extends Component {
   state = {
     viewIndex: 0,
     views: ["Login", "Boxes", "Box", "Item", "logout"],
     box_id: 0,
     box_name: "",
+    authToken: "",
     username: "",
-    authKey: "",
+    password: "",
+  };
+  setPassword = (password) => {
+    this.setState({ password });
+  };
+  setUsername = (username) => {
+    this.setState({ username });
   };
   handleNavBarClick = () => {
     console.log("Parent Store Clicked");
@@ -27,31 +34,45 @@ class Store extends Component {
     console.log(box_id);
     console.log(name);
     const box_name = name.name;
-    const item_id = box_id.id;
     this.setState({ box_id });
     this.setState({ box_name });
     this.setState({ viewIndex: 4 });
   };
   handleLogOut = () => {
     console.log("Parent Store Logout");
+    const cookies = new Cookies();
+    cookies.set("authToken", "", { path: "/" });
+    const url = "http://192.168.86.45:8123/logout";
+    axios.get(url).then((res) => {
+      const authToken = res.data.authToken;
+      this.setState({ authToken });
+    });
+    this.setState({ viewIndex: 2 });
     const viewIndex = 0;
     this.setState({ viewIndex });
   };
-  handleLogin = (page) => {
-    axios
-      .get(
-        `http://192.168.86.45:8123/login?username=paulnovack&password=paulnovack`
-      )
-      .then((res) => {
-        const authToken = res.data.authToken;
-        this.setState({ authToken });
-      });
+  handleLogin = (username, password) => {
+    const url =
+      "http://192.168.86.45:8123/login?username=" +
+      this.state.username +
+      "&password=" +
+      this.state.password;
+    axios.get(url).then((res) => {
+      const authToken = res.data.authToken;
+      this.setState({ authToken });
+    });
     this.setState({ viewIndex: 2 });
   };
 
   render() {
     if (this.state.viewIndex === 0) {
-      return <Login onLoginClick={this.handleLogin} />;
+      return (
+        <Login
+          onLoginClick={this.handleLogin}
+          setUsername={this.setUsername}
+          setPassword={this.setPassword}
+        />
+      );
     } else if (this.state.viewIndex === 2) {
       return (
         <React.Fragment>

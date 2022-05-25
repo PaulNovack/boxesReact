@@ -23,7 +23,7 @@ class Boxes extends Component {
     let DeleteBox = {};
     let Boxes = this.state.BoxList;
     Boxes.forEach((obj, idx) => {
-      if (obj.id == id.id) {
+      if (obj.id === id.id) {
         DeleteBox = obj;
         Boxes.splice(idx, 1);
       }
