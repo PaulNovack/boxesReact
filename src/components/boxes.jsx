@@ -68,7 +68,7 @@ class Boxes extends Component {
       .get(`http://192.168.86.45:8123/box`, { withCredentials: true })
       .then((res) => {
         const BoxList = res.data;
-
+        console.log(BoxList);
         this.setState({ BoxList });
       });
   };

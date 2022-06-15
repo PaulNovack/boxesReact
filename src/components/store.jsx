@@ -42,7 +42,7 @@ class Store extends Component {
     console.log("Parent Store Logout");
     const cookies = new Cookies();
     cookies.set("authToken", "", { path: "/" });
-    const url = "http://192.168.86.45:8123/logout";
+    const url = "/logout";
     axios.get(url).then((res) => {
       const authToken = res.data.authToken;
       this.setState({ authToken });
@@ -53,7 +53,7 @@ class Store extends Component {
   };
   handleLogin = (username, password) => {
     const url =
-      "http://192.168.86.45:8123/login?username=" +
+      "/login?username=" +
       this.state.username +
       "&password=" +
       this.state.password;

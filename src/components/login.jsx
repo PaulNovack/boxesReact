@@ -7,7 +7,7 @@ class Login2 extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="text-center">
+        <div className="text-center p-4">
           <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
             <div className="row">
               <h2>Boxes Inventory Application</h2>
