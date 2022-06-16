@@ -39,38 +39,34 @@ class Boxes extends Component {
     Box.name = "New Box " + (this.state.BoxList.length + 1);
     //Box.weight = 0;
     Box.picture = "";
-    axios
-      .post(`http://192.168.86.45:8123/box`, Box, { withCredentials: true })
-      .then((res) => {
-        let NewBox = [res.data];
-        NewBox[0].weight = 0;
-        NewBox[0].name = "New Box " + (this.state.BoxList.length + 1);
-        NewBox[0].picture = "";
-        let BoxList = this.state.BoxList.concat(NewBox);
-        this.setState({ BoxList });
-      });
+    axios.post(`box`, Box, { withCredentials: true }).then((res) => {
+      let NewBox = [res.data];
+      NewBox[0].weight = 0;
+      NewBox[0].name = "New Box " + (this.state.BoxList.length + 1);
+      NewBox[0].picture = "";
+      let BoxList = this.state.BoxList.concat(NewBox);
+      this.setState({ BoxList });
+    });
   };
   updateBox = (box) => {
     box.picture = "";
-    const url = "http://192.168.86.45:8123/box/" + box.id;
+    const url = "box/" + box.id;
     axios.put(url, box, { withCredentials: true }).then((res) => {});
   };
   deleteBox = (box) => {
     box.picture = "";
-    const url = "http://192.168.86.45:8123/box/" + box.id;
+    const url = "box/" + box.id;
     axios.delete(url, box, { withCredentials: true }).then((res) => {});
 
     let BoxList = this.state.BoxList;
     this.setState({ BoxList });
   };
   getBoxes = () => {
-    axios
-      .get(`http://192.168.86.45:8123/box`, { withCredentials: true })
-      .then((res) => {
-        const BoxList = res.data;
-        console.log(BoxList);
-        this.setState({ BoxList });
-      });
+    axios.get(`box`, { withCredentials: true }).then((res) => {
+      const BoxList = res.data;
+      console.log(BoxList);
+      this.setState({ BoxList });
+    });
   };
   render() {
     return (

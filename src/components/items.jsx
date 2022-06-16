@@ -38,7 +38,7 @@ class Items extends Component {
     Item.box_id = this.props.box_id.id;
     Item.quantity = 1;
     Item.picture = "";
-    const url = "http://192.168.86.45:8123/item/" + this.props.box_id.id;
+    const url = "item/" + this.props.box_id.id;
     axios.post(url, Item, { withCredentials: true }).then((res) => {
       let NewItem = res.data;
       let ItemList = this.state.ItemList.concat(NewItem);
@@ -47,20 +47,20 @@ class Items extends Component {
   };
   updateItem = (Item) => {
     Item.picture = "";
-    const url = "http://192.168.86.45:8123/item/" + Item.id;
+    const url = "item/" + Item.id;
     axios.put(url, Item, { withCredentials: true }).then((res) => {});
   };
   deleteItem = (Item) => {
     Item.picture = "";
 
-    const url = "http://192.168.86.45:8123/item/" + Item.id;
+    const url = "item/" + Item.id;
     axios.delete(url, Item, { withCredentials: true }).then((res) => {});
 
     let ItemList = this.state.ItemList;
     this.setState({ ItemList });
   };
   getItems = () => {
-    const url = "http://192.168.86.45:8123/box/" + this.props.box_id.id;
+    const url = "box/" + this.props.box_id.id;
     axios.get(url, { withCredentials: true }).then((res) => {
       const ItemList = res.data;
 
