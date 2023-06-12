@@ -1,7 +1,7 @@
 # boxesReact
 
 
-<img src="https://user-images.githubusercontent.com/3844301/170073844-9e893950-2ca9-4a53-a672-c6724f6de4ca.jpeg" alt="drawing" width="250"/>
+
 
 - Deprecated..  rewrite done in functional components this is old react class based front end
 
